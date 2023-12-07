@@ -5,16 +5,16 @@ from django.test import TestCase
 
 
 class PostTestCase(TestCase):
-    fixtures = ['blogging_test_fixture.json']
+    fixtures = ["blogging_test_fixture.json"]
 
     def setUp(self):
         self.user = User.objects.get(pk=1)
 
     def test_string_representation(self):
-        expected = 'A good title'
+        expected = "A good title"
         p1 = Post(title=expected, author=self.user)
         p1.save()
         actual = str(p1)
         self.assertEqual(expected, actual)
-        self.assertEqual('Mr.', p1.author.first_name)
+        self.assertEqual("Mr.", p1.author.first_name)
         self.assertIsNone(p1.published_at)
